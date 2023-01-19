@@ -1,9 +1,32 @@
 ## Instalasi
 
-- Pastikan komputer/laptop sudah terinstall [Git](https://git-scm.com/downloads)
-- Pastikan komputer/laptop sudah terinstall [Node.js](https://ionicframework.com/docs/reference/glossary#node)
-- Install Angular CLI menggunakan NPM
-
+- Install [Laravel](https://laravel.com/docs) Menggunakan [Composer](https://getcomposer.org/)
 ```bash
-npm install -g @angular/cli
+composer install
+```
+
+- Setup Konfigurasi
+```bash
+cp .env.example .env
+```
+- Rename Database di .env
+
+- Generate key Konfigurasi
+```bash
+php artisan key:generate
+```
+
+- Install Laravel [Passport](https://laravel.com/docs/9.x/passport#main-content)
+```bash
+composer require laravel/passport
+```
+
+- Migration Table
+```bash
+php artisan migrate --seed
+```
+
+- Miration Token Passport
+```bash
+php artisan passport:install
 ```
