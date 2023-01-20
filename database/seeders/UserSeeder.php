@@ -21,13 +21,13 @@ class UserSeeder extends Seeder
         	'name' => 'Administrator', 
         	'email' => 'admin@gmail.com',
         	'password' => bcrypt('123456'),
-        ])->syncRoles(['ADMIN']);
+        ])->syncRoles(['ADMINISTRATOR']);
 
         // create user1
         $user2 = User::create([
         	'name' => 'Admin Sekolah', 
         	'email' => 'smk@gmail.com',
         	'password' => bcrypt('123456'),
-        ])->syncRoles(['SCHOOL']);
+        ])->syncRoles(['ADMIN']);
     }
 }

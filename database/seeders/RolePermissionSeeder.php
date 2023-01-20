@@ -36,6 +36,11 @@ class RolePermissionSeeder extends Seeder
             'permissions-add',
             'permissions-edit',
             'permissions-delete',
+
+            'members-list',
+            'members-add',
+            'members-edit',
+            'members-delete',
         ];
  
         $permissions = collect($arrayOfPermissionNames)->map(function ($permission) {
@@ -48,7 +53,7 @@ class RolePermissionSeeder extends Seeder
         // create role
 
         // # admin role
-        $role = Role::create(['name' => 'ADMIN', 'guard_name' => 'api'])
+        $role = Role::create(['name' => 'ADMINISTRATOR', 'guard_name' => 'api'])
             ->syncPermissions([
                 // users permission
                 'users-list',
@@ -65,9 +70,17 @@ class RolePermissionSeeder extends Seeder
                 'permissions-add',
                 'permissions-edit',
                 'permissions-delete',
+
+                //members
+                'members-list',
+                'members-add',
+                'members-edit',
+                'members-delete',
             ]);
 
         // # school role
-        $role = Role::create(['name' => 'SCHOOL', 'guard_name' => 'api']);
+        $role = Role::create(['name' => 'ADMIN',    'guard_name' => 'api']);
+        $role = Role::create(['name' => 'CHECKER',  'guard_name' => 'api']);
+        $role = Role::create(['name' => 'USER',     'guard_name' => 'api']);
     }
 }

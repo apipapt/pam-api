@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PermissionsController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\MembersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,5 +61,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function() {
         Route::delete   ('/multi-delete',   [UsersController::class, 'multiDestroy'     ])->middleware('permission:users-delete');
         Route::delete   ('{id}',            [UsersController::class, 'destroy'          ])->middleware('permission:users-delete');
         Route::get      ('get/roles',       [UsersController::class, 'getRoles'         ])->middleware('permission:users-list');
+    });
+});
+
+// Member
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::group(['prefix' => 'members'], function() {
+        Route::get      ('',                [MembersController::class, 'index'            ])->middleware('permission:members-list');
+        Route::post     ('',                [MembersController::class, 'store'            ])->middleware('permission:members-add');
+        Route::get      ('{id}',            [MembersController::class, 'show'             ])->middleware('permission:members-list');
+        Route::put      ('{id}',            [MembersController::class, 'update'           ])->middleware('permission:members-edit');
+        Route::delete   ('/multi-delete',   [MembersController::class, 'multiDestroy'     ])->middleware('permission:members-delete');
+        Route::delete   ('{id}',            [MembersController::class, 'destroy'          ])->middleware('permission:members-delete');
+        Route::get      ('get/members',     [MembersController::class, 'getMembers'       ])->middleware('permission:members-list');
     });
 });
