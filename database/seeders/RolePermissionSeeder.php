@@ -41,6 +41,12 @@ class RolePermissionSeeder extends Seeder
             'members-add',
             'members-edit',
             'members-delete',
+
+            // water data
+            'water-data-list',
+            'water-data-add',
+            'water-data-edit',
+            'water-data-delete'
         ];
  
         $permissions = collect($arrayOfPermissionNames)->map(function ($permission) {
@@ -76,6 +82,12 @@ class RolePermissionSeeder extends Seeder
                 'members-add',
                 'members-edit',
                 'members-delete',
+
+                // water data
+                'water-data-list',
+                'water-data-add',
+                'water-data-edit',
+                'water-data-delete'
             ]);
 
         // # school role

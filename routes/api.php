@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PermissionsController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\MembersController;
+use App\Http\Controllers\WaterDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'], function() {
 
 // Member
 Route::group(['middleware' => 'auth:api'], function() {
+    // Member
     Route::group(['prefix' => 'members'], function() {
         Route::get      ('',                [MembersController::class, 'index'            ])->middleware('permission:members-list');
         Route::post     ('',                [MembersController::class, 'store'            ])->middleware('permission:members-add');
@@ -74,5 +76,15 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::delete   ('/multi-delete',   [MembersController::class, 'multiDestroy'     ])->middleware('permission:members-delete');
         Route::delete   ('{id}',            [MembersController::class, 'destroy'          ])->middleware('permission:members-delete');
         Route::get      ('get/members',     [MembersController::class, 'getMembers'       ])->middleware('permission:members-list');
+    });
+
+    // Water Data
+    Route::group(['prefix' => 'water-data'], function() {
+        Route::get      ('',                [WaterDataController::class, 'index'            ])->middleware('permission:water-data-list');
+        Route::post     ('',                [WaterDataController::class, 'store'            ])->middleware('permission:water-data-add');
+        Route::get      ('{id}',            [WaterDataController::class, 'show'             ])->middleware('permission:water-data-list');
+        Route::put      ('{id}',            [WaterDataController::class, 'update'           ])->middleware('permission:water-data-edit');
+        Route::delete   ('/multi-delete',   [WaterDataController::class, 'multiDestroy'     ])->middleware('permission:water-data-delete');
+        Route::delete   ('{id}',            [WaterDataController::class, 'destroy'          ])->middleware('permission:water-data-delete');
     });
 });

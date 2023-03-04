@@ -19,15 +19,29 @@ class UserSeeder extends Seeder
         // create user1
         $user1 = User::create([
         	'name' => 'Administrator', 
-        	'email' => 'admin@gmail.com',
+        	'email' => 'administrator@apt.com',
         	'password' => bcrypt('123456'),
         ])->syncRoles(['ADMINISTRATOR']);
 
-        // create user1
+        // create user2
         $user2 = User::create([
-        	'name' => 'Admin Sekolah', 
-        	'email' => 'smk@gmail.com',
+        	'name' => 'Admin', 
+        	'email' => 'admin@apt.com',
         	'password' => bcrypt('123456'),
         ])->syncRoles(['ADMIN']);
+
+        // create user3
+        $user2 = User::create([
+        	'name' => 'Checker', 
+        	'email' => 'checker@apt.com',
+        	'password' => bcrypt('123456'),
+        ])->syncRoles(['CHECKER']);
+
+        // create user4
+        $user2 = User::create([
+        	'name' => 'User', 
+        	'email' => 'user@apt.com',
+        	'password' => bcrypt('123456'),
+        ])->syncRoles(['USER']);
     }
 }
